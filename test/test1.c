@@ -24,7 +24,7 @@ void test_sqr(void)
 
 void test_sum(void)
 {
-    TEST_ASSERT_EQUAL(4, sum(2,2));
+    TEST_ASSERT_EQUAL(5, sum(2,3));
 
     /* Dummy Fail */
     TEST_ASSERT_EQUAL(9, sum(3,6));
