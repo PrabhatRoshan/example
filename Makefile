@@ -6,14 +6,14 @@
 #<TAB SPACE>command
  
   
-PROJ_NAME = demo.exe
+PROJ_NAME = demo
 TEST_PROJ_NAME = Test_$(PROJ_NAME)
 
-BUILD_DIR = Build
+BUILD_DIR = build
 
-SRC=test.c\
-src\sum.c\
-src\sqr.c
+SRC = test.c\
+src/sum.c\
+src/sqr.c
 
 TEST_SRC = test/test1.c\
 unity/unity.c\
@@ -37,11 +37,12 @@ else
    endif
 endif
 
+$(PROJECT_NAME):all
 # Makefile will not run target command if the name with file already exists. To override, use .PHONY
 .PHONY : all test coverage run clean doc
 
 all:$(BUILD_DIR)
-	gcc test.c $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
+	gcc $(SRC) $(INC) -o $(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
 
 run: all
 	$(call FixPath,$(BUILD_DIR)/$(PROJ_NAME).$(EXEC))
@@ -64,3 +65,6 @@ clean:
 	$(RM) $(call FixPath,$(BUILD_DIR)/*)
 	make clean -C doc
 	rmdir $(BUILD_DIR) doc/htm
+
+$(BUILD_DIR):
+	mkdir build
