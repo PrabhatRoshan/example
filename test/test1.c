@@ -2,6 +2,9 @@
 #include "../inc/fun.h"
 #include "../unity/unity.h"
 
+void test_sqr(void);
+void test_sum(void);
+
 /* Required by the unity test framework */
 void setUp()
 {
@@ -11,31 +14,29 @@ void tearDown()
 {
 }
 
-void test_zero(void)
+void test_sqr(void)
 {
-    
-    TEST_ASSERT_EQUAL(0, my_test(0,0));
-    TEST_ASSERT_EQUAL(0, my_test(1,-1));
-    //TEST_ASSERT_EQUAL(0, Index());
-}
-void test_1(void){
-    TEST_ASSERT_EQUAL(3, my_test(2,1));
-    TEST_ASSERT_EQUAL(9, my_test(4,5));
-}
-void test_2(void){
-    TEST_ASSERT_EQUAL(-1, my_test(3,-4));
-    TEST_ASSERT_EQUAL(-2, my_test(3,-5));
+    TEST_ASSERT_EQUAL(4, sqr(2));
+
+    /* Dummy Fail */
+    TEST_ASSERT_EQUAL(9, sqr(3));
 }
 
+void test_sum(void)
+{
+    TEST_ASSERT_EQUAL(4, sum(2,2));
+
+    /* Dummy Fail */
+    TEST_ASSERT_EQUAL(9, sum(3,6));
+}
 int main(void)
 {
     /* Initiate the Unity Test Framework */
     UNITY_BEGIN();
 
     /* Run Test functions */
-    RUN_TEST(test_zero);
-    RUN_TEST(test_1);
-    RUN_TEST(test_2);
+    RUN_TEST(test_sqr);
+    RUN_TEST(test_sum);
 
     /* Close the Unity Test Framework */
     return UNITY_END();
